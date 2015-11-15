@@ -1,0 +1,23 @@
+{
+  "name": "ng-webpack-play",
+  "dependencies": {
+    "angular2": "^2.0.0-alpha.45",
+    "es6-shim": "^0.33.13"
+  },
+  "devDependencies": {
+    "connect": "^3.4.0",
+    "del": "^2.1.0",
+    "gulp": "^3.9.0",
+    "gulp-tslint": "^3.6.0",
+    "gulp-util": "^3.0.7",
+    "open": "0.0.5",
+    "serve-static": "^1.10.0",
+    "ts-loader": "^0.5.6",
+    "typescript": "^1.6.2",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.1"
+  },
+  "scripts": {
+    "postinstall": "gulp cp-deps"
+  }
+}
