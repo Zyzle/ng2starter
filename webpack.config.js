@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = {
   entry: "./app/bootstrap",
   output: {
@@ -10,5 +12,12 @@ module.exports = {
     loaders: [{
       test: /\.ts/, loaders: ['ts-loader'], exclude: /node_modules/
     }]
-  }
+  },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      output: {
+        comments: false
+      }
+    })
+  ]
 };

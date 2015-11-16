@@ -13,11 +13,6 @@ var PATHS = {
   lib: [
     'lib/*.js'
   ],
-  node_deps: [
-    'node_modules/reflect-metadata/Reflect.js',
-    'node_modules/zone.js/dist/zone.js',
-    'node_modules/es6-shim/es6-shim.js'
-  ],
   dist: 'dist'
 };
 
@@ -40,16 +35,12 @@ gulp.task('libs', ['webpack'], function(){
   return gulp.src(PATHS.lib).pipe(gulp.dest(PATHS.dist + '/lib'));
 });
 
-gulp.task('cp-deps', function(){
-  return gulp.src(PATHS.node_deps).pipe(gulp.dest('lib'));
-});
-
 gulp.task('ts-lint', function(){
   var tslint = require('gulp-tslint');
   return gulp.src(PATHS.src.ts).pipe(tslint()).pipe(tslint.report('prose'));
 });
 
-gulp.task('webpack', ['cp-deps'], function(callback) {
+gulp.task('webpack', function(callback) {
   // run webpack
   webpack(webpackConfig, function(err, stats) {
     if(err){
@@ -62,7 +53,7 @@ gulp.task('webpack', ['cp-deps'], function(callback) {
   });
 });
 
-gulp.task('play', ['cp-deps'], function(callback) {
+gulp.task('play', function(callback) {
   var compiler = webpack(webpackConfig);
   var open = require('open');
 
