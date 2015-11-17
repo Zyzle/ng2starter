@@ -41,6 +41,13 @@ gulp.task('ts-lint', function(){
 });
 
 gulp.task('webpack', function(callback) {
+  webpackConfig.plugins = [
+    new webpack.optimize.UglifyJsPlugin({
+      output: {
+        comments: false
+      }
+    })
+  ];
   // run webpack
   webpack(webpackConfig, function(err, stats) {
     if(err){
