@@ -10,6 +10,10 @@ var PATHS = {
     html: ['!node_modules/**', '**/*.html'],
     css: ['!node_modules/**', '**/*.css']
   },
+  shims: [
+    'node_modules/angular2/bundles/angular2-polyfills.js',
+    'node_modules/es6-shim/es6-shim.js'
+  ],
   lib: [
     'lib/*.js'
   ],
@@ -31,8 +35,12 @@ gulp.task('css', function(){
   return gulp.src(PATHS.src.css).pipe(gulp.dest(PATHS.dist));
 });
 
-gulp.task('libs', ['webpack'], function(){
+gulp.task('libs', ['shims', 'webpack'], function(){
   return gulp.src(PATHS.lib).pipe(gulp.dest(PATHS.dist + '/lib'));
+});
+
+gulp.task('shims', function(){
+  return gulp.src(PATHS.shims).pipe(gulp.dest('lib'));
 });
 
 gulp.task('ts-lint', function(){
@@ -60,7 +68,7 @@ gulp.task('webpack', function(callback) {
   });
 });
 
-gulp.task('play', function(callback) {
+gulp.task('play', ['shims'], function(callback) {
   var compiler = webpack(webpackConfig);
   var open = require('open');
 
