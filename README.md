@@ -8,6 +8,8 @@ Starter for Angular 2, uses Webpack and Gulp. Tasks setup for distribution build
 
 Based around [ng2-webpack-play](https://github.com/pkozlowski-opensource/ng2-webpack-play) and a few other starter projects.
 
+This starter has an [introductory blog post](http://zyzle.github.io/2015/12/23/ng2starter/) that goes over the basics.
+
 ## Usage
 Install dependencies and setup environment with
 ```bash
